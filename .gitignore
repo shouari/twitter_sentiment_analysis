@@ -1,7 +1,6 @@
 # Default ignored files
 /shelf/
-/workspace.xml
 venv/
-twitter_authenticate.py
 comprehend_auth.py
 tweets_extracted/
+src/

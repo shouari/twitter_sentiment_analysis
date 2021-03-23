@@ -20,5 +20,5 @@ def tweet_scrape(keyword,max_tweet,date):
     # dropping the tweets with a specific username I did not need
     df_1 = df_1[df_1.username != search_keyword.lower()]
     df_1.to_csv(f'tweets_extracted/clean_tweets_{search_keyword}.csv')
-    # os.remove(f"tweets_extracted/tweets_{search_keyword}.csv")
+    os.remove(f"tweets_extracted/tweets_{search_keyword}.csv")
     return print('Extraction Done')

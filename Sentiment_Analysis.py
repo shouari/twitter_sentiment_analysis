@@ -56,10 +56,10 @@ def sentiment_summary_to_excel(filename, keyword):
         df = pd.read_csv(f"tweets_with_sentiments_{keyword}.csv")
     workbook = xlsxwriter.Workbook(f'sentiment_analysis_{keyword}_summary.xlsx')
     worksheet = workbook.add_worksheet()
-    average_scores = (["Average negative score:", df.negative_score.mean()],
-                      ["Average positive score:", df.positive_score.mean()],
-                      ["Average mixed score:", df.mixed_score.mean()],
-                      ["Average neutral score:", df.neutral_score.mean()])
+    average_scores = (["Average negative score", df.negative_score.mean()],
+                      ["Average positive score", df.positive_score.mean()],
+                      ["Average mixed score", df.mixed_score.mean()],
+                      ["Average neutral score", df.neutral_score.mean()])
     col =1
     row =0
     worksheet.write(row, col, "Total tweets")

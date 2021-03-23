@@ -12,7 +12,7 @@ def main(keyword, max_tweet, date):
     else:
         tweet_scrape(search_keyword, max_tweet, date)
 
-    # sentiment_summary_to_excel(filename,keyword)
+    sentiment_summary_to_excel(filename,keyword)
 
 if __name__ == '__main__':
     search_keyword = input("Enter the keyword for tweets search" + '\n')

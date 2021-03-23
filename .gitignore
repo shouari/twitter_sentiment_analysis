@@ -4,3 +4,4 @@
 venv/
 twitter_authenticate.py
 comprehend_auth.py
+tweets_extracted/

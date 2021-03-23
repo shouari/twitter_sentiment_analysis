@@ -13,7 +13,6 @@ def main(keyword):
     sentiment_summary_to_excel(filename,keyword)
 
 
-
 if __name__ == '__main__':
     search_keyword = input("Enter the keyword for tweets search" + '\n')
     main(search_keyword)

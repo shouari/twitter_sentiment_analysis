@@ -3,16 +3,16 @@ import pandas as pd
 import os
  # refer to Twint documentation for further details ; https://github.com/twintproject/twint
 
-def tweet_scrape(keyword, tweet_limit=200):
+def tweet_scrape(keyword,max_tweet,date):
     search_keyword = keyword
-    tweet_limit = 3000
-
+    date= date
     t = twint.Config()
     t.Search = search_keyword
     t.Store_object = True
-    t.Limit = tweet_limit
+    t.Limit = max_tweet
+    t.Since = date
     t.Store_csv = True
-    t.Output = f"tweets_extracted/tweets_{search_keyword}.csv"
+    t.Output = f"./tweets_extracted/tweets_{search_keyword}.csv"
     twint.run.Search(t)
     # selecting only needed columns
     df = pd.read_csv(f"tweets_extracted/tweets_{search_keyword}.csv")
@@ -20,5 +20,5 @@ def tweet_scrape(keyword, tweet_limit=200):
     # dropping the tweets with a specific username I did not need
     df_1 = df_1[df_1.username != search_keyword.lower()]
     df_1.to_csv(f'tweets_extracted/clean_tweets_{search_keyword}.csv')
-    os.remove(f"tweets_extracted/tweets_{search_keyword}.csv")
+    # os.remove(f"tweets_extracted/tweets_{search_keyword}.csv")
     return print('Extraction Done')

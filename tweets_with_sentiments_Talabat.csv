@@ -1,4 +1,4 @@
-,Unnamed: 0,id,date,username,name,tweet,language,sentiment,positive_score,negative_score,neutral_score,mixed_score
+id,date,username,name,tweet,language,sentiment,positive_score,negative_score,neutral_score,mixed_score
 0,0,1374448220030472202,2021-03-23,_lajolie_,ɪиᴊσυɒ 🇮🇶🇮🇶,@Sabazaidd @Talabat 😂😂😂,und,NEUTRAL,0.008954852819442749,0.003540552919730544,0.9866303205490112,0.0008743364596739411
 1,1,1374447698208694274,2021-03-23,sabazaidd,Saba,@Talabat  تعلمو,ar,NEUTRAL,0.0007517993217334151,0.000935687858145684,0.9983069896697998,5.524824246094795e-06
 2,2,1374446281351856128,2021-03-23,faisal_abh_,Faisal A.,@alnaamaaa yes yes they’re always za7ma I feel like it’s the hub for all Talabat/carriage orders of Dafna,en,NEUTRAL,0.12147042155265808,0.024713944643735886,0.8537322282791138,8.346221875399351e-05

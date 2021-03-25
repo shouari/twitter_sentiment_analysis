@@ -3,3 +3,13 @@ max tweet extracted =10000
 Rafeeq =GoRafeeq
 Snoonu = snoonu_qa
 Talabat = Talabat
+
+key = os.environ.get('AZURE_SEARCH_KEY', '8466c9c4385649c2ad209aea6b71b0fa')
+def search_images_bing(key, term, max_images:int=150, **kwargs):
+     params = {'q':term, 'count':max_images}
+     headers = {"Ocp-Apim-Subscription-Key":key}
+     search_url = "https://api.bing.microsoft.com/v7.0/images/search"
+     response = requests.get(search_url, headers=headers, params=params)
+     response.raise_for_status()
+     search_results = response.json()
+     return L(search_results['value'])

@@ -43,16 +43,17 @@ def tweet_bulk_analysis(filename, keyword):
                 sentiment_assignment(df,index, text, language)
             else:
                 df.drop(index, inplace=True)
-                return print("Language not supported, the row has been dropped from dataset")
+                print("Language not supported, the row has been dropped from dataset")
         df.to_csv(f"tweets_with_sentiments_{keyword}.csv")
     return
 
 def sentiment_summary_to_excel(filename, keyword):
 
+    print('Beginning of the sentiment analysis of the extracted data')
     if path.exists(f"tweets_with_sentiments_{keyword}.csv"):
         df = pd.read_csv(f"tweets_with_sentiments_{keyword}.csv")
     else:
-        tweet_bulk_analysis(filename, keyword)
+        # tweet_bulk_analysis(filename, keyword)
         df = pd.read_csv(f"tweets_with_sentiments_{keyword}.csv")
     workbook = xlsxwriter.Workbook(f'sentiment_analysis_{keyword}_summary.xlsx')
     worksheet = workbook.add_worksheet()
@@ -60,14 +61,25 @@ def sentiment_summary_to_excel(filename, keyword):
                       ["Average positive score", df.positive_score.mean()],
                       ["Average mixed score", df.mixed_score.mean()],
                       ["Average neutral score", df.neutral_score.mean()])
-    col =1
-    row =0
-    worksheet.write(row, col, "Total tweets")
+    col = 1
+    row = 0
+    worksheet.write(row, col, f"Total tweets collected for {keyword}")
     worksheet.write_number(row, col + 1, len(df.index))
     for title, score in average_scores:
-        worksheet.write_string(row+2, col,title)
-        worksheet.write_number(row+2, col+1, score)
-        row+=1
+        worksheet.write_string(row + 2, col, title)
+        worksheet.write_number(row + 2, col + 1, score)
+        row += 1
+    df_1 = df[['id', 'tweet', 'sentiment']]
+    df_1 = df_1.reset_index()
+    result = df_1[['sentiment']].value_counts()
+    dict_results = result.to_dict()
 
+    worksheet.write(row + 4, col, "Sentiment Analysis results")
+    for i in dict_results:
+        worksheet.write_string(row + 5, col, i[0])
+        worksheet.write_number(row + 5, col + 1, dict_results[i])
+        row += 1
     workbook.close()
+
     return print(f"The output of the analysis is saved in the file: sentiment_analysis_{keyword}_summary.xlsx")
+

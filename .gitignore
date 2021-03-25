@@ -4,5 +4,5 @@ venv/
 comprehend_auth.py
 tweets_extracted/
 src/
-.xlsx
-.csv
+*.xlsx
+*.csv
